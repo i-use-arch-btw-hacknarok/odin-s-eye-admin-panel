@@ -26,10 +26,11 @@ ChartJS.register(
 interface ChardChartProps {
     sx: any
     phrases: Phrase[],
-    onHover?: (itemIndex: number) => void
+    onHover?: (itemIndex: number) => void,
+    onMouseLeave? : () => void
 }
 
-const ChartCard: React.FC<ChardChartProps> = ({phrases, sx, onHover}: ChardChartProps) => {
+const ChartCard: React.FC<ChardChartProps> = ({phrases, sx, onHover, onMouseLeave}: ChardChartProps) => {
     const options = {
         responsive: true,
         interaction: {
@@ -95,7 +96,7 @@ const ChartCard: React.FC<ChardChartProps> = ({phrases, sx, onHover}: ChardChart
     };
 
     return <CustomCard sx={sx}>
-        <Line options={options} data={data} />;
+        <Line options={options} data={data} onMouseLeave={onMouseLeave}/>;
     </CustomCard>
 };
 export default ChartCard;
