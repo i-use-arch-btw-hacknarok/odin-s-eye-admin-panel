@@ -23,73 +23,79 @@ ChartJS.register(
     Legend
 );
 
-interface StepChartProps {
+interface ChardChartProps {
     sx: any
-    phrases?: Phrase[]
+    phrases: Phrase[],
+    onHover?: (itemIndex: number) => void
 }
 
-const StepChart: React.FC<StepChartProps> = ({sx}: StepChartProps) => {
+const ChartCard: React.FC<ChardChartProps> = ({phrases, sx, onHover}: ChardChartProps) => {
+    const options = {
+        responsive: true,
+        interaction: {
+            mode: 'index' as const,
+            intersect: false,
+        },
+        onHover: (event: any, chartElement: any) => {
+            const itemIndex = chartElement.length > 0 ? chartElement[0].index : null;
+            if (onHover) {
+                onHover(itemIndex);
+            }
+        },
+        plugins: {
+            legend: {
+                position: 'top' as const,
+                labels: {
+                    color: 'white'
+                }
+            },
+            title: {
+                display: true,
+                text: 'Phrases to time focus in minutes',
+                color: 'white'
+            },
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    color: 'white'
+                }
+            },
+            x: {
+                ticks: {
+                    color: 'white'
+                }
+            }
+        },
+        elements: {
+            line: {
+                tension: 0,
+                stepped: true,
+                borderColor: 'green',
+                borderWidth: 3
+            },
+            point: {
+                radius: 0
+            }
+        },
+    };
+
+    const data = {
+        labels: phrases.map(phrase => new Date(phrase.timestamp).getMinutes()),
+        datasets: [
+            {
+                label: 'Average focus time span in minutes',
+                data: phrases.map(phrase => phrase.focusPercentage),
+                fill: false,
+                borderColor: 'green',
+                backgroundColor: 'green',
+            },
+        ],
+    };
 
     return <CustomCard sx={sx}>
         <Line options={options} data={data} />;
     </CustomCard>
 };
-
-const options = {
-    responsive: true,
-    interaction: {
-        mode: 'index' as const,
-        intersect: false,
-    },
-    plugins: {
-        legend: {
-            position: 'top' as const,
-            labels: {
-                color: 'white'
-            }
-        },
-        title: {
-            display: true,
-            text: 'Phrases to time focus',
-            color: 'white'
-        },
-    },
-    scales: {
-        y: {
-            beginAtZero: true,
-            ticks: {
-                color: 'white'
-            }
-        },
-        x: {
-            ticks: {
-                color: 'white'
-            }
-        }
-    },
-    elements: {
-        line: {
-            tension: 0,
-            stepped: true,
-            borderColor: 'blue',
-            borderWidth: 3
-        },
-        point: {
-            radius: 0
-        }
-    },
-};
-
-const data = {
-    labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6'],
-    datasets: [
-        {
-            label: 'Product 1',
-            data: [-60, -20, 0, -40, 40, 80],
-            fill: false,
-            borderColor: 'blue',
-            backgroundColor: 'blue',
-        },
-    ],
-};
-export default StepChart;
+export default ChartCard;

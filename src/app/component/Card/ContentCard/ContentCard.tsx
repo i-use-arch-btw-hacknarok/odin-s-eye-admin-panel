@@ -20,10 +20,6 @@ const ContentCard = ({header, sx, phrases}: Props) => {
             {phrases.map(phrase => <FormattedPhrase phrase={phrase} />)}
         </Typography>
     </CustomCard>
-
-    const formatData = () => {
-
-    }
 }
 
 export default ContentCard;
