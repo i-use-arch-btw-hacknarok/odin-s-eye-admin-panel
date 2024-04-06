@@ -8,6 +8,10 @@ import MeetingsOverview from "./MeetingsOverview";
 
 const steps = ['Overwie', 'Details', 'Comparer'];
 
+const text = "This is a basic layout and you can add more functionality and style it further to match your application's look and feel. If you have more data related to the meeting, you can continue to add it in a similar manner, creating a comprehensive details page."
+const modifiedText = "This is a very simple layout and you can add more functionality and style it better to match your application's look and wydmuszka. Supposing you have more data related to the meeting, you can try to add it in a similar manner, by always uwu a comprehensive details page."
+
+
 export default function MeetingSteps() {
     const [activeStep, setActiveStep] = useState(0);
     const [selectedMeeting, setSelectedMeeting] = useState(null); // Replace with your meeting data type
@@ -33,7 +37,7 @@ export default function MeetingSteps() {
             case 1:
                 return <MeetingDetails />;
             case 2:
-                return <MeetingComparer />;
+                return <MeetingComparer originalContent={text} modifiedContent={modifiedText} />;
             default:
                 return 'Unknown step';
         }
