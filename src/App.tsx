@@ -12,17 +12,7 @@ import Home from "./app/screen/Home/Home";
 import Settings from "./app/screen/Settings/Settings";
 import Live from "./app/screen/Live/Live";
 import Analysis from "./app/screen/Analysis/Analysis";
-
-const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <div>Hello world!</div>,
-    },
-    {
-        path: "/page",
-        element: <Meeting/>,
-    },
-]);
+import Recordings from "./app/screen/Recordings/Recordings";
 
 function App() {
     return (
@@ -35,6 +25,7 @@ function App() {
                     <Route path={"/live"} element={<Live />} />
                     <Route path={"/home"} element={<Home />} />
                     <Route path={"/analysis"} element={<Analysis />} />
+                    <Route path={"/recordings"} element={<Recordings />} />
                 </Routes>
             </NavBar>
         </BrowserRouter>
