@@ -1,0 +1,13 @@
+.dark-bg {
+    background-color: #1A1C24;
+    border: 0;
+}
+
+.container-bg {
+    background-color: black;
+    height: 100vh;
+}
+
+.MuiPaper-root {
+    background-color: #1A1C24 !important;
+}
