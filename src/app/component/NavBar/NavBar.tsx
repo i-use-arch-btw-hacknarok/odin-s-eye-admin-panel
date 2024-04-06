@@ -2,7 +2,7 @@ import * as React from 'react';
 import {styled, useTheme, Theme, CSSObject, createMuiTheme} from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
+import MuiAppBar, {AppBarProps as MuiAppBarProps} from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -19,8 +19,10 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import './NavBar.css';
-import {Image} from "@mui/icons-material";
-import {Avatar, Paper} from "@mui/material";
+import {Doorbell, Image, More, Search, Settings} from "@mui/icons-material";
+import {Avatar, Button, Container, Paper} from "@mui/material";
+import NewMeetingDialog from "../NewMeetingDialog/NewMeetingDialog";
+import {useNavigate} from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -45,7 +47,7 @@ const closedMixin = (theme: Theme): CSSObject => ({
     },
 });
 
-const DrawerHeader = styled('div')(({ theme }) => ({
+const DrawerHeader = styled('div')(({theme}) => ({
     display: 'flex',
     bgColor: '#1A1C24',
     alignItems: 'center',
@@ -60,7 +62,7 @@ interface AppBarProps extends MuiAppBarProps {
 
 const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
-})<AppBarProps>(({ theme, open }) => ({
+})<AppBarProps>(({theme, open}) => ({
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
         easing: theme.transitions.easing.sharp,
@@ -76,8 +78,8 @@ const AppBar = styled(MuiAppBar, {
     }),
 }));
 
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
-    ({ theme, open }) => ({
+const Drawer = styled(MuiDrawer, {shouldForwardProp: (prop) => prop !== 'open'})(
+    ({theme, open}) => ({
         width: drawerWidth,
         bgColor: '#1A1C24',
         flexShrink: 0,
@@ -96,9 +98,11 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 
 // @ts-ignore
-const NavBar = ({ children }) => {
+const NavBar = ({children}) => {
     const theme = useTheme();
+    const navigate = useNavigate();
     const [open, setOpen] = React.useState(false);
+    const [newMeetingDialogOpened, setNewMeetingDialogOpened] = React.useState(false);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -108,9 +112,46 @@ const NavBar = ({ children }) => {
         setOpen(false);
     };
 
+    const toggleMeetingDialog = () => {
+        setNewMeetingDialogOpened(true)
+    }
+
+    const handleNewMeetingDialogClose = () => {
+        setNewMeetingDialogOpened(false);
+    };
+
+
+    const navButtons = [
+        {
+            text: 'Home',
+            link: '/'
+        },
+        {
+            text: 'Meetings',
+            link: '/meetings'
+        },
+        {
+            text: 'Recordings',
+            link: '/recordings'
+        },
+        {
+            text: 'Live Transmissions',
+            link: '/live'
+        },
+        {
+            text: 'Analysis',
+            link: '/analysis'
+        },
+        {
+            text: 'Settings',
+            link: '/settings'
+        }
+    ]
+
     return (
-        <Box sx={{ display: 'flex' }}>
-            <CssBaseline />
+        <Box sx={{display: 'flex'}}>
+            <NewMeetingDialog isOpened={newMeetingDialogOpened} onClose={handleNewMeetingDialogClose}/>
+            <CssBaseline/>
             <AppBar position="fixed" open={open}>
                 <Toolbar className={"dark-bg"}>
                     <IconButton
@@ -121,27 +162,52 @@ const NavBar = ({ children }) => {
                         edge="start"
                         sx={{
                             marginRight: 5,
-                            ...(open && { display: 'none' }),
+                            ...(open && {display: 'none'}),
                         }}
                     >
-                        <MenuIcon />
+                        <MenuIcon/>
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div" >
+                    <Typography variant="h6" noWrap component="div">
                         Odin's Eye
                     </Typography>
-                        <Avatar src="logo.png" />
+                    <Avatar src="logo.png"/>
+
+                    <Container sx={{flex: 1}}/>
+
+                    <Button
+                        sx={{color: "white", backgroundColor: "green"}}
+                        onClick={() => toggleMeetingDialog()}
+                    >
+                        + Create new Meeting
+                    </Button>
+
+                    <IconButton
+                        size="large"
+                        aria-label="display more actions"
+                        edge="end"
+                        color="inherit"
+                        sx={{marginLeft: "2%", marginRight: "2%"}}
+                    >
+                        <Doorbell/>
+                    </IconButton>
+
+                    <Avatar src="true_viking.png"/>
+                    <Typography variant="body2">
+                        Kapitan Wiking
+                    </Typography>
+
                 </Toolbar>
             </AppBar>
             <Drawer variant="permanent" open={open} className="dark-bg">
                 <DrawerHeader className="dark-bg">
                     <IconButton onClick={handleDrawerClose} style={{color: 'white'}}>
-                        {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon />}
+                        {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
                     </IconButton>
                 </DrawerHeader>
-                <Divider className="dark-bg" />
+                <Divider className="dark-bg"/>
                 <List className="dark-bg">
-                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                        <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+                    {navButtons.map((navBtn, index) => (
+                        <ListItem key={navBtn.text} disablePadding sx={{display: 'block'}} onClick={() => navigate(navBtn.link)}>
                             <ListItemButton
                                 sx={{
                                     minHeight: 48,
@@ -158,16 +224,16 @@ const NavBar = ({ children }) => {
                                         color: 'white'
                                     }}
                                 >
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                    {index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}
                                 </ListItemIcon>
-                                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                                <ListItemText primary={navBtn.text} sx={{opacity: open ? 1 : 0}}/>
                             </ListItemButton>
                         </ListItem>
                     ))}
                 </List>
             </Drawer>
-            <Box component="main" sx={{ flexGrow: 1, p: 3 }} className="container-bg">
-                <DrawerHeader />
+            <Box component="main" sx={{flexGrow: 1, p: 3}} className="container-bg">
+                <DrawerHeader/>
                 {children}
             </Box>
         </Box>

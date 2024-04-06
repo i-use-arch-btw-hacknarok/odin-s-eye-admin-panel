@@ -8,6 +8,10 @@ import '@fontsource/roboto/700.css';
 import {BrowserRouter, createBrowserRouter, Route, RouterProvider, Routes} from "react-router-dom";
 import Meeting from "./app/screen/Meeting/Meeting";
 import NavBar from "./app/component/NavBar/NavBar";
+import Home from "./app/screen/Home/Home";
+import Settings from "./app/screen/Settings/Settings";
+import Live from "./app/screen/Live/Live";
+import Analysis from "./app/screen/Analysis/Analysis";
 
 const router = createBrowserRouter([
     {
@@ -22,11 +26,19 @@ const router = createBrowserRouter([
 
 function App() {
     return (
-        <><NavBar>
-            <RouterProvider router={router} />
-        </NavBar></>
-    )
-        ;
+        <BrowserRouter>
+            <NavBar>
+                <Routes>
+                    <Route path={"/"} element={<Home />} />
+                    <Route path={"/meetings"} element={<Meeting />} />
+                    <Route path={"/settings"} element={<Settings />} />
+                    <Route path={"/live"} element={<Live />} />
+                    <Route path={"/home"} element={<Home />} />
+                    <Route path={"/analysis"} element={<Analysis />} />
+                </Routes>
+            </NavBar>
+        </BrowserRouter>
+    );
 }
 
 export default App;
