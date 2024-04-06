@@ -1,3 +1,4 @@
 export interface Phrase {
-    content: string
+    content: string,
+    focusPercentage: number
 }

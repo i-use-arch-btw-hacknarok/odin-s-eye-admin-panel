@@ -19,6 +19,8 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import './NavBar.css';
+import {Image} from "@mui/icons-material";
+import {Avatar, Paper} from "@mui/material";
 
 const drawerWidth = 240;
 
@@ -127,6 +129,7 @@ const NavBar = ({ children }) => {
                     <Typography variant="h6" noWrap component="div" >
                         Odin's Eye
                     </Typography>
+                        <Avatar src="logo.png" />
                 </Toolbar>
             </AppBar>
             <Drawer variant="permanent" open={open} className="dark-bg">

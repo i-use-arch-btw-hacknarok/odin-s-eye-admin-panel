@@ -11,6 +11,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import CustomCard from "../CustomCard/CustomCard";
+import {Phrase} from "../../../types/Phrase";
 
 ChartJS.register(
     CategoryScale,
@@ -24,6 +25,7 @@ ChartJS.register(
 
 interface StepChartProps {
     sx: any
+    phrases?: Phrase[]
 }
 
 const StepChart: React.FC<StepChartProps> = ({sx}: StepChartProps) => {
