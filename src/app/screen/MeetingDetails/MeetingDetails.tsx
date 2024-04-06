@@ -6,7 +6,7 @@ import {useState} from "react";
 import {HistoryRecord, MockHistoryRecords} from "../../types/History";
 import HistoryCard from "../../component/Card/HistoryCard/HistoryCard";
 
-export default function Meeting() {
+export default function MeetingDetails() {
     const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(null);
     const phrases: Phrase[] = MockPhrases;
     const history: HistoryRecord[] = MockHistoryRecords;
@@ -25,7 +25,7 @@ export default function Meeting() {
     }}>
         <ContentCard header="Transcriptions"
                      phrases={[...phrases, ...phrases]}
-                     sx={{flex: 1, overflow: 'auto', maxHeight: '80vh'}}
+                     sx={{flex: 1, overflow: 'auto', maxHeight: '70vh'}}
                      selectedItemIndex={selectedItemIndex}
         />
 

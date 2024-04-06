@@ -16,7 +16,7 @@ const FormattedPhrase = ({phrase, isHighlighted}: Props) => {
         if(statusPercentage === 50)
             return 'white';
 
-        return statusPercentage > 50 ? `rgb(0, ${255 * statusPercentage / 140},0)` : `rgb(${255 * statusPercentage / 30},0,0)`
+        return statusPercentage > 50 ? `rgb(0, ${255 * statusPercentage  / 140},0)` : `rgb(${255 * (statusPercentage + 10) / 30},0,0)`
     }
 
     return <span style={{

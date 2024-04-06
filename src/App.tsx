@@ -6,13 +6,14 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import {BrowserRouter, createBrowserRouter, Route, RouterProvider, Routes} from "react-router-dom";
-import Meeting from "./app/screen/Meeting/Meeting";
 import NavBar from "./app/component/NavBar/NavBar";
 import Home from "./app/screen/Home/Home";
 import Settings from "./app/screen/Settings/Settings";
 import Live from "./app/screen/Live/Live";
 import Analysis from "./app/screen/Analysis/Analysis";
 import Recordings from "./app/screen/Recordings/Recordings";
+import Meetings from "./app/screen/Meetings/Meetings";
+import MeetingSteps from "./app/screen/MeetingDetails/MeetingsDetailsComposer";
 
 function App() {
     return (
@@ -20,7 +21,8 @@ function App() {
             <NavBar>
                 <Routes>
                     <Route path={"/"} element={<Home />} />
-                    <Route path={"/meetings"} element={<Meeting />} />
+                    <Route path={"/meetings"} element={<Meetings />} />
+                    <Route path={"/meetings/details"} element={<MeetingSteps />} />
                     <Route path={"/settings"} element={<Settings />} />
                     <Route path={"/live"} element={<Live />} />
                     <Route path={"/home"} element={<Home />} />
