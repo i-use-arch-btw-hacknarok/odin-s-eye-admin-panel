@@ -8,10 +8,11 @@ import {
     Tooltip,
     Legend
 } from 'chart.js';
-import { Line } from 'react-chartjs-2';
+import {Line} from 'react-chartjs-2';
 import {HistoryRecord, MockHistoryRecords} from "../../../types/History";
 import CustomCard from "../CustomCard/CustomCard";
 import {Phrase} from "../../../types/Phrase";
+import {Paper} from "@mui/material";
 
 ChartJS.register(
     CategoryScale,
@@ -27,7 +28,6 @@ interface Props {
     sx: any
     history: HistoryRecord[],
 }
-
 
 
 const HistoryCard = ({sx, history}: Props) => {
@@ -76,7 +76,14 @@ const HistoryCard = ({sx, history}: Props) => {
     };
 
     return <CustomCard sx={sx}>
-        <Line options={options} data={data} />
+        <Paper elevation={3} sx={{
+            backgroundColor: '#23242A',
+            color: 'white',
+            borderRadius: '12px',
+            boxShadow: '0 8px 32px 0 rgba(255, 255, 255, 0.1)'
+        }}>
+            <Line options={options} data={data}/>
+        </Paper>
     </CustomCard>;
 }
 

@@ -9,9 +9,10 @@ import {
     Tooltip,
     Legend
 } from 'chart.js';
-import { Line } from 'react-chartjs-2';
+import {Line} from 'react-chartjs-2';
 import CustomCard from "../CustomCard/CustomCard";
 import {Phrase} from "../../../types/Phrase";
+import {Paper} from "@mui/material";
 
 ChartJS.register(
     CategoryScale,
@@ -27,7 +28,7 @@ interface ChardChartProps {
     sx: any
     phrases: Phrase[],
     onHover?: (itemIndex: number) => void,
-    onMouseLeave? : () => void
+    onMouseLeave?: () => void
 }
 
 const ChartCard: React.FC<ChardChartProps> = ({phrases, sx, onHover, onMouseLeave}: ChardChartProps) => {
@@ -96,7 +97,14 @@ const ChartCard: React.FC<ChardChartProps> = ({phrases, sx, onHover, onMouseLeav
     };
 
     return <CustomCard sx={sx}>
-        <Line options={options} data={data} onMouseLeave={onMouseLeave}/>;
+        <Paper elevation={3} sx={{
+            backgroundColor: '#23242A',
+            color: 'white',
+            borderRadius: '12px',
+            boxShadow: '0 8px 32px 0 rgba(255, 255, 255, 0.1)'
+        }}>
+            <Line options={options} data={data} onMouseLeave={onMouseLeave}/>
+        </Paper>
     </CustomCard>
 };
 export default ChartCard;

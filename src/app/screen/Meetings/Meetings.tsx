@@ -62,15 +62,16 @@ const Meetings = () => {
                     </Box>
                     <Container sx={{maxHeight: "70vh", overflow: 'auto'}}>
                         {sampleProjects.map((project) => (
-                            <Grid item xs={12} md={6} lg={4} sx={{marginBottom: 5}} key={project.id}>
-                                <Card raised>
+                            <Grid item xs={12} md={6} lg={4} sx={{marginBottom: 5, boxShadow: '0 8px 32px 0 rgba(255, 255, 255, 0.1)',}} key={project.id}>
+                                <Card raised sx={{backgroundColor: '#23242A'}}>
                                     <CardMedia
                                         component="img"
                                         height="140"
                                         image={project.imageUrl}
                                         alt={project.title}
+                                        sx={{backgroundColor: '#23242A'}}
                                     />
-                                    <CardContent>
+                                    <CardContent sx={{backgroundColor: '#23242A'}}>
                                         <Typography gutterBottom variant="h6" component="h2" color="white">
                                             {project.title}
                                         </Typography>

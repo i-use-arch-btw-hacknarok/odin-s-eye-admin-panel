@@ -30,8 +30,8 @@ export default function MeetingDetails() {
         />
 
         <Container sx={{display: 'flex', flexDirection: 'column', flex: 1, gap: '5vh'}}>
-            <StepCard sx={{flex: 1}} phrases={phrases} onHover={onHover} onMouseLeave={resetHoverState} />
-            <HistoryCard sx={{flex: 1}} history={history} />
+            <StepCard sx={{flex: 1, backgroundColor: '#23242A'}} phrases={phrases} onHover={onHover} onMouseLeave={resetHoverState} />
+            <HistoryCard sx={{flex: 1, backgroundColor: '#23242A'}} history={history} />
         </Container>
 
     </Container>

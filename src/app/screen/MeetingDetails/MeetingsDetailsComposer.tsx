@@ -6,7 +6,7 @@ import {Redo, Undo} from "@mui/icons-material";
 import './MeetingsDetailsComposer.css';
 import MeetingsOverview from "./MeetingsOverview";
 
-const steps = ['Overwie', 'Details', 'Comparer'];
+const steps = ['Overview', 'Details', 'Comparer'];
 
 const text = "This is a basic layout and you can add more functionality and style it further to match your application's look and feel. If you have more data related to the meeting, you can continue to add it in a similar manner, creating a comprehensive details page."
 const modifiedText = "This is a very simple layout and you can add more functionality and style it better to match your application's look and wydmuszka. Supposing you have more data related to the meeting, you can try to add it in a similar manner, by always uwu a comprehensive details page."

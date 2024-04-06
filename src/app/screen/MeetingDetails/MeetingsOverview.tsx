@@ -1,77 +1,104 @@
 import React from 'react';
 import {
-    Box,
-    Card,
-    CardActionArea,
-    CardContent,
+    Paper,
     Typography,
-    Grid,
-    Container
+    Box,
+    Divider,
+    List,
+    ListItem,
+    ListItemText,
+    Container,
+    CardContent,
+    Card
 } from '@mui/material';
 
-// Sample meeting data
-const meetingsData = [
-    {
-        id: 1,
-        title: 'Quarterly Business Review',
-        date: '2023-06-30',
-        attendees: 12,
-        description: 'A review of business performance in the last quarter.',
-    },
-    {
-        id: 2,
-        title: 'Product Roadmap Alignment',
-        date: '2023-07-04',
-        attendees: 8,
-        description: 'Discussing the product roadmap for the next year.',
-    },
-    {
-        id: 3,
-        title: 'Marketing Strategy Meeting',
-        date: '2023-07-10',
-        attendees: 10,
-        description: 'Planning the marketing strategy for the upcoming product launch.',
-    },
-];
 
-const MeetingOverviewScreen: React.FC = () => {
-    const handleCardClick = (meetingId: number) => {
-        console.log('Clicked meeting with ID:', meetingId);
-    };
+const meetingDetail: any = {
+    id: 1,
+    title: 'Quarterly Business Review',
+    date: '2023-06-30',
+    attendees: 12,
+    attention: 42.6,
+    location: '42-230 Koniecpol Waska',
+    description: 'A review of business performance in the last quarter.',
+};
 
+const MeetingOverview: React.FC = () => {
     return (
-        <Container maxWidth="lg">
-            <Typography variant="h4" gutterBottom>
-                Meeting Overview
-            </Typography>
-            <Grid container spacing={4}>
-                {meetingsData.map((meeting) => (
-                    <Grid item xs={12} sm={6} md={4} key={meeting.id}>
-                        <Card elevation={3}>
-                            <CardActionArea onClick={() => handleCardClick(meeting.id)}>
-                                <CardContent>
-                                    <Typography variant="h5" component="h2" gutterBottom>
-                                        {meeting.title}
-                                    </Typography>
-                                    <Typography variant="body1" color="textSecondary" component="p">
-                                        {meeting.description}
-                                    </Typography>
-                                    <Box display="flex" justifyContent="space-between" alignItems="center" mt={2}>
-                                        <Typography variant="body2" component="p">
-                                            Date: {meeting.date}
-                                        </Typography>
-                                        <Typography variant="body2" component="p">
-                                            Attendees: {meeting.attendees}
-                                        </Typography>
-                                    </Box>
-                                </CardContent>
-                            </CardActionArea>
-                        </Card>
-                    </Grid>
-                ))}
-            </Grid>
+        <Container maxWidth="md" sx={{my: 4}}>
+            <Paper elevation={3} sx={{
+                backgroundColor: '#23242A',
+                color: 'white',
+                borderRadius: '12px',
+                boxShadow: '0 8px 32px 0 rgba(255, 255, 255, 0.1)',
+                p: 3
+            }}>
+                <Typography variant="h4" gutterBottom sx={{fontWeight: 'bold'}}>
+                    {meetingDetail.title}
+                </Typography>
+                <Typography variant="subtitle1" sx={{color: '#bbb'}} gutterBottom>
+                    {meetingDetail.date} at {meetingDetail.time}
+                </Typography>
+                <Typography variant="subtitle1" sx={{color: '#bbb'}} gutterBottom>
+                    Location: {meetingDetail.location}
+                </Typography>
+                <Divider sx={{my: 2, backgroundColor: '#333'}}/>
+                <Typography variant="body1" sx={{color: '#bbb', marginBottom: 3}}>
+                    {meetingDetail.description}
+                </Typography>
+
+                <Container sx={{display: 'flex', gap: '3%'}}>
+                    <Card sx={{flex: 1}}>
+                        <CardContent sx={{backgroundColor:'green'}}>
+                            <Typography variant='h5' sx={{color: 'white'}}>
+                                Attendes Number
+                            </Typography>
+                            <Typography variant='h5' sx={{color: 'white'}}>
+                                {meetingDetail.attendees}
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                    <Card sx={{flex: 1}}>
+                        <CardContent sx={{backgroundColor:'green'}}>
+                            <Typography variant='h5' sx={{color: 'white'}}>
+                                Avg Attention Span
+                            </Typography>
+                            <Typography variant='h5' sx={{color: 'white'}}>
+                                {meetingDetail.attention}
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                    <Card sx={{flex: 1}}>
+                        <CardContent sx={{backgroundColor:'green'}}>
+                            <Typography variant='h5' sx={{color: 'white'}}>
+                                Meeting Duration
+                            </Typography>
+                            <Typography variant='h5' sx={{color: 'white'}}>
+                                25 min
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                </Container>
+
+                <Container sx={{display: 'flex', gap: '3%', marginTop: "5vh"}}>
+                    <Card sx={{flex: 1}}>
+                        <CardContent sx={{backgroundColor:'green'}}>
+                            <Typography variant='h5' sx={{color: 'white'}}>
+                                Ankieta link
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                    <Card sx={{flex: 1}}>
+                        <CardContent sx={{backgroundColor:'green'}}>
+                            <Typography variant='h5' sx={{color: 'white'}}>
+                                Facebook Event
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                </Container>
+            </Paper>
         </Container>
     );
 };
 
-export default MeetingOverviewScreen;
+export default MeetingOverview;
