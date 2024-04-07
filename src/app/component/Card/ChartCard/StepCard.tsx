@@ -84,7 +84,7 @@ const ChartCard: React.FC<ChardChartProps> = ({phrases, sx, onHover, onMouseLeav
     };
 
     const data = {
-        labels: phrases.map(phrase => new Date(phrase.timestamp).getMinutes()),
+        labels: phrases.map((phrase, index) => index),
         datasets: [
             {
                 label: 'Average focus time span in minutes',

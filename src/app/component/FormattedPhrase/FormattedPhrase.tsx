@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import React from "react";
 
 interface Props {
-    phrase: Phrase,
+    phrase: any,
     isHighlighted: boolean | false
 }
 
@@ -23,7 +23,7 @@ const FormattedPhrase = ({phrase, isHighlighted}: Props) => {
         color: getColor(phrase.focusPercentage),
         backgroundColor: isHighlighted ? 'lightgrey' : undefined
     }} >
-        {phrase.content}
+        {phrase.content + " "}
     </span>
 }
 

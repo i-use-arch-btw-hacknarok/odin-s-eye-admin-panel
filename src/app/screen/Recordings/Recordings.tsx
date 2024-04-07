@@ -22,13 +22,13 @@ interface Meeting {
 const initialMeetings: Meeting[] = [
     {
         id: "1",
-        topic: 'Uwu',
+        topic: 'Very advanced topic',
         date: '2024:08:09T09:08:12',
         attendees: 12
     },
     {
         id: "2",
-        topic: 'UwuMachine',
+        topic: 'AutoMachine',
         date: '2024:08:09T09:08:12',
         attendees: 12
     },

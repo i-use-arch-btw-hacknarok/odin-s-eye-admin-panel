@@ -14,21 +14,25 @@ import Analysis from "./app/screen/Analysis/Analysis";
 import Recordings from "./app/screen/Recordings/Recordings";
 import Meetings from "./app/screen/Meetings/Meetings";
 import MeetingSteps from "./app/screen/MeetingDetails/MeetingsDetailsComposer";
+import Login from "./app/screen/Login/Login";
 
 function App() {
     return (
         <BrowserRouter>
             <NavBar>
-                <Routes>
-                    <Route path={"/"} element={<Home />} />
-                    <Route path={"/meetings"} element={<Meetings />} />
-                    <Route path={"/meetings/:conferenceId"} element={<MeetingSteps />} />
-                    <Route path={"/settings"} element={<Settings />} />
-                    <Route path={"/live"} element={<Live />} />
-                    <Route path={"/home"} element={<Home />} />
-                    <Route path={"/analysis"} element={<Analysis />} />
-                    <Route path={"/recordings"} element={<Recordings />} />
-                </Routes>
+                {/*@ts-ignore*/ }
+                <Login>
+                    <Routes>
+                        <Route path={"/"} element={<Home/>}/>
+                        <Route path={"/meetings"} element={<Meetings/>}/>
+                        <Route path={"/meetings/:conferenceId"} element={<MeetingSteps/>}/>
+                        <Route path={"/settings"} element={<Settings/>}/>
+                        <Route path={"/live"} element={<Live/>}/>
+                        <Route path={"/home"} element={<Home/>}/>
+                        <Route path={"/analysis"} element={<Analysis/>}/>
+                        <Route path={"/recordings"} element={<Recordings/>}/>
+                    </Routes>
+                </Login>
             </NavBar>
         </BrowserRouter>
     );

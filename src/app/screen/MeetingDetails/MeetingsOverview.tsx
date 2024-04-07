@@ -1,16 +1,5 @@
 import React from 'react';
-import {
-    Paper,
-    Typography,
-    Box,
-    Divider,
-    List,
-    ListItem,
-    ListItemText,
-    Container,
-    CardContent,
-    Card
-} from '@mui/material';
+import { Button, Container, Paper, Typography, Box, Divider } from '@mui/material';
 
 
 const meetingDetail: any = {
@@ -25,7 +14,7 @@ const meetingDetail: any = {
 
 const MeetingOverview: React.FC = () => {
     return (
-        <Container maxWidth="md" sx={{my: 4}}>
+        <Container maxWidth="md" sx={{ my: 4 }}>
             <Paper elevation={3} sx={{
                 backgroundColor: '#23242A',
                 color: 'white',
@@ -33,69 +22,49 @@ const MeetingOverview: React.FC = () => {
                 boxShadow: '0 8px 32px 0 rgba(255, 255, 255, 0.1)',
                 p: 3
             }}>
-                <Typography variant="h4" gutterBottom sx={{fontWeight: 'bold'}}>
+                <Typography variant="h4" gutterBottom sx={{ fontWeight: 'bold' }}>
                     {meetingDetail.title}
                 </Typography>
-                <Typography variant="subtitle1" sx={{color: '#bbb'}} gutterBottom>
-                    {meetingDetail.date} at {meetingDetail.time}
+                <Typography variant="subtitle1" sx={{ color: '#bbb' }} gutterBottom>
+                    {meetingDetail.date} at Location: {meetingDetail.location}
                 </Typography>
-                <Typography variant="subtitle1" sx={{color: '#bbb'}} gutterBottom>
-                    Location: {meetingDetail.location}
-                </Typography>
-                <Divider sx={{my: 2, backgroundColor: '#333'}}/>
-                <Typography variant="body1" sx={{color: '#bbb', marginBottom: 3}}>
+                <Divider sx={{ my: 2, backgroundColor: '#333' }} />
+                <Typography variant="body1" sx={{ color: '#bbb', marginBottom: 3 }}>
                     {meetingDetail.description}
                 </Typography>
 
-                <Container sx={{display: 'flex', gap: '3%'}}>
-                    <Card sx={{flex: 1}}>
-                        <CardContent sx={{backgroundColor:'green'}}>
-                            <Typography variant='h5' sx={{color: 'white'}}>
-                                Attendes Number
-                            </Typography>
-                            <Typography variant='h5' sx={{color: 'white'}}>
-                                {meetingDetail.attendees}
-                            </Typography>
-                        </CardContent>
-                    </Card>
-                    <Card sx={{flex: 1}}>
-                        <CardContent sx={{backgroundColor:'green'}}>
-                            <Typography variant='h5' sx={{color: 'white'}}>
-                                Avg Attention Span
-                            </Typography>
-                            <Typography variant='h5' sx={{color: 'white'}}>
-                                {meetingDetail.attention}
-                            </Typography>
-                        </CardContent>
-                    </Card>
-                    <Card sx={{flex: 1}}>
-                        <CardContent sx={{backgroundColor:'green'}}>
-                            <Typography variant='h5' sx={{color: 'white'}}>
-                                Meeting Duration
-                            </Typography>
-                            <Typography variant='h5' sx={{color: 'white'}}>
-                                25 min
-                            </Typography>
-                        </CardContent>
-                    </Card>
-                </Container>
+                <Box sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    gap: 2,
+                    flexWrap: 'wrap'
+                }}>
+                    <Button variant="contained" sx={{
+                        backgroundColor: 'green',
+                        '&:hover': {
+                            backgroundColor: 'darkgreen'
+                        },
+                        flex: '1 1 auto',
+                        margin: '5px'
+                    }}>
+                        <Typography variant='subtitle1' sx={{color: 'white', fontWeight: 'bold'}}>
+                            Survey link
+                        </Typography>
+                    </Button>
 
-                <Container sx={{display: 'flex', gap: '3%', marginTop: "5vh"}}>
-                    <Card sx={{flex: 1}}>
-                        <CardContent sx={{backgroundColor:'green'}}>
-                            <Typography variant='h5' sx={{color: 'white'}}>
-                                Ankieta link
-                            </Typography>
-                        </CardContent>
-                    </Card>
-                    <Card sx={{flex: 1}}>
-                        <CardContent sx={{backgroundColor:'green'}}>
-                            <Typography variant='h5' sx={{color: 'white'}}>
-                                Facebook Event
-                            </Typography>
-                        </CardContent>
-                    </Card>
-                </Container>
+                    <Button variant="contained" sx={{
+                        backgroundColor: 'green',
+                        '&:hover': {
+                            backgroundColor: 'darkgreen'
+                        },
+                        flex: '1 1 auto',
+                        margin: '5px'
+                    }}>
+                        <Typography variant='subtitle1' sx={{color: 'white', fontWeight: 'bold'}}>
+                            Facebook Event
+                        </Typography>
+                    </Button>
+                </Box>
             </Paper>
         </Container>
     );

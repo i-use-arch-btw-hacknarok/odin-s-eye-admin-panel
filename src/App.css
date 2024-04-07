@@ -40,3 +40,7 @@
 circle {
   background-color: green !important;
 }
+
+.kep-login-facebook {
+  display: none !important;
+}

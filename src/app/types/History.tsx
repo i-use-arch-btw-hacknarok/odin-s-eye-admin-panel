@@ -7,34 +7,34 @@ export interface HistoryRecord {
 
 const MockHistoryRecords: HistoryRecord[] = [
     {
-        numberOfPeople: 10,
+        numberOfPeople: 15,
         date: '2019-07-30T08:21',
-        averageAttentionSpan: 0.3,
-        meetingLengthInMinutes: 30
+        averageAttentionSpan: 30,
+        meetingLengthInMinutes: 23
     },
     {
-        numberOfPeople: 20,
+        numberOfPeople: 25,
         date: '2019-07-31T08:21',
-        averageAttentionSpan: 0.5,
-        meetingLengthInMinutes: 25
+        averageAttentionSpan: 50,
+        meetingLengthInMinutes: 27
     },
     {
-        numberOfPeople: 22,
+        numberOfPeople: 32,
         date: '2019-07-31T08:21',
-        averageAttentionSpan: 0.4,
-        meetingLengthInMinutes: 25
+        averageAttentionSpan: 90,
+        meetingLengthInMinutes: 21
     },
     {
-        numberOfPeople: 20,
+        numberOfPeople: 40,
         date: '2019-07-31T08:21',
-        averageAttentionSpan: 0.9,
+        averageAttentionSpan: 70,
         meetingLengthInMinutes: 40
     },
     {
-        numberOfPeople: 28,
+        numberOfPeople: 30,
         date: '2019-07-31T08:21',
-        averageAttentionSpan: 0.3,
-        meetingLengthInMinutes: 21
+        averageAttentionSpan: 80,
+        meetingLengthInMinutes: 15
     }
 ]
 

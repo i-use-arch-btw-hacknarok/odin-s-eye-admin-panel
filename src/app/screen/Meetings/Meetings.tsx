@@ -19,7 +19,7 @@ const sampleProjects: Project[] = [
         id: 1,
         title: 'hawidaopjw',
         description: 'farma jedwabnikuf',
-        imageUrl: 'true_viking.png',
+        imageUrl: 'logo.png',
         category: 'Wodnik',
         date: '02.05.2023',
     },
@@ -27,7 +27,7 @@ const sampleProjects: Project[] = [
         id: 2,
         title: 'Game',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        imageUrl: 'true_viking.png',
+        imageUrl: 'logo.png',
         category: 'Bomba',
         date: '02.05.2023',
     },
@@ -86,7 +86,7 @@ const Meetings = () => {
                         marginBottom: 2
                     }}>
                         <Typography variant="h5" component="div" sx={{fontWeight: 'bold', color: 'white'}}>
-                            Current Streams
+                            Current Conferences
                         </Typography>
                         <Chip
                             icon={<CheckCircleOutlineIcon/>}

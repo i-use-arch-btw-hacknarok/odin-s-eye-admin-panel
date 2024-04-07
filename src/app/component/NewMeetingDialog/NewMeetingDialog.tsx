@@ -82,7 +82,7 @@ const NewMeetingDialog = ({isOpened, onClose}: Props) => {
             onClose={handleClose}
             aria-labelledby="form-dialog-title"
         >
-            <Stepper activeStep={activeStep}>
+            <Stepper activeStep={activeStep} sx={{margin: '2vh'}}>
                 {steps.map((label) => (
                     <Step key={label}>
                         <StepLabel>{label}</StepLabel>

@@ -116,6 +116,7 @@ const NavBar = ({children}) => {
     const [open, setOpen] = React.useState(false);
     const [newMeetingDialogOpened, setNewMeetingDialogOpened] = React.useState(false);
 
+
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -125,7 +126,6 @@ const NavBar = ({children}) => {
     };
 
     const toggleMeetingDialog = () => {
-        console.log("awdawd")
         setNewMeetingDialogOpened(true)
     }
 
