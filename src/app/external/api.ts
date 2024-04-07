@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: 'https://499e-188-147-4-106.ngrok-free.app',
+    baseURL: 'https://4430-188-147-4-106.ngrok-free.app',
 });
 
 interface Conference

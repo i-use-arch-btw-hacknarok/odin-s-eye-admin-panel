@@ -15,8 +15,7 @@ const modifiedText = "This is a very simple layout and you can add more function
 
 
 export default function MeetingSteps() {
-    // let { conferenceId } = useParams();
-    let conferenceId = "cluoshci200s9amzyd8fmhzdc";
+    let { conferenceId } = useParams();
     const [activeStep, setActiveStep] = useState(0);
     const [selectedMeeting, setSelectedMeeting] = useState({id:"", topic: ""});
 
