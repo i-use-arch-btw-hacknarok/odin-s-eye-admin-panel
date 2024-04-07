@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { Box, Stepper, Step, StepButton, Button, Typography, Paper, Container } from '@mui/material';
 import MeetingDetails from './MeetingDetails';
 import MeetingComparer from './MeetingComparer';
 import {Redo, Undo} from "@mui/icons-material";
 import './MeetingsDetailsComposer.css';
 import MeetingsOverview from "./MeetingsOverview";
+import {useParams} from "react-router-dom";
+import {getDataById} from "../../external/api";
 
 const steps = ['Overview', 'Details', 'Comparer'];
 
@@ -13,8 +15,17 @@ const modifiedText = "This is a very simple layout and you can add more function
 
 
 export default function MeetingSteps() {
+    let { conferenceId } = useParams();
     const [activeStep, setActiveStep] = useState(0);
-    const [selectedMeeting, setSelectedMeeting] = useState(null); // Replace with your meeting data type
+    const [selectedMeeting, setSelectedMeeting] = useState({id:"", topic: ""});
+
+    useEffect(() => {
+        getDataById(conferenceId).then(data => {
+            console.log(data)
+            setSelectedMeeting(data);
+        })
+    }, [conferenceId]);
+
 
     // @ts-ignore
     const handleStep = (step) => () => {

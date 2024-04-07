@@ -1,6 +1,9 @@
 import * as React from 'react';
 import {Box, Card, CardContent, CardMedia, Typography, Chip, Grid, Container} from '@mui/material';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import {useEffect, useState} from "react";
+import {getData} from "../../external/api";
+import {useNavigate} from "react-router-dom";
 
 interface Project {
     id: number;
@@ -36,9 +39,42 @@ const sampleProjects: Project[] = [
         category: 'Zielsko',
         date: '02.05.2023',
     },
+    {
+        id: 3,
+        title: 'Haoiyaaaah',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        imageUrl: 'logo.png',
+        category: 'Zielsko',
+        date: '02.05.2023',
+    },
+    {
+        id: 3,
+        title: 'Haoiyaaaah',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        imageUrl: 'logo.png',
+        category: 'Zielsko',
+        date: '02.05.2023',
+    },
 ];
 
 const Meetings = () => {
+    const [conferences, setConferences] = useState<any>([]);
+    const [historyConfereneces, setHistoryConferences] = useState<any>([]);
+    const navigate = useNavigate();
+    useEffect(() => {
+        getData().then(data => {
+            console.log(data)
+            // @ts-ignore
+            setHistoryConferences([...data.slice(0, 5)]);
+            // @ts-ignore
+            setConferences(data.filter(item => item.videoId !== null).slice(0, 5))
+            // @ts-ignore
+            console.log(data.filter(item => item.videoId !== null).slice(0, 5))
+        })
+    }, []);
+
+
+
     return (
         <Card>
             <CardContent>
@@ -61,7 +97,7 @@ const Meetings = () => {
                         />
                     </Box>
                     <Container sx={{maxHeight: "70vh", overflow: 'auto'}}>
-                        {sampleProjects.map((project) => (
+                        {sampleProjects.map((project, index) => (
                             <Grid item xs={12} md={6} lg={4} sx={{marginBottom: 5, boxShadow: '0 8px 32px 0 rgba(255, 255, 255, 0.1)',}} key={project.id}>
                                 <Card raised sx={{backgroundColor: '#23242A'}}>
                                     <CardMedia
@@ -71,9 +107,12 @@ const Meetings = () => {
                                         alt={project.title}
                                         sx={{backgroundColor: '#23242A'}}
                                     />
-                                    <CardContent sx={{backgroundColor: '#23242A'}}>
+
+                                    <CardContent sx={{backgroundColor: '#23242A'}} onClick={() => navigate("/meetings/" + conferences ? conferences[index].id : 0)}>
                                         <Typography gutterBottom variant="h6" component="h2" color="white">
-                                            {project.title}
+                                            {// @ts-ignore
+                                                 conferences.length && conferences[index].topic
+                                            }
                                         </Typography>
                                         <Typography variant="body2" color="white">
                                             {project.description}

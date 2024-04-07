@@ -19,10 +19,22 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import './NavBar.css';
-import {Doorbell, Image, More, Search, Settings} from "@mui/icons-material";
+import {
+    Analytics,
+    Doorbell,
+    Home,
+    Image,
+    LiveTv,
+    MeetingRoom,
+    More,
+    Movie,
+    Search,
+    Settings
+} from "@mui/icons-material";
 import {Avatar, Button, Container, Paper} from "@mui/material";
 import NewMeetingDialog from "../NewMeetingDialog/NewMeetingDialog";
 import {useNavigate} from "react-router-dom";
+import Meetings from "../../screen/Meetings/Meetings";
 
 const drawerWidth = 240;
 
@@ -113,6 +125,7 @@ const NavBar = ({children}) => {
     };
 
     const toggleMeetingDialog = () => {
+        console.log("awdawd")
         setNewMeetingDialogOpened(true)
     }
 
@@ -124,27 +137,33 @@ const NavBar = ({children}) => {
     const navButtons = [
         {
             text: 'Home',
-            link: '/'
+            link: '/',
+            icon: <Home />
         },
         {
             text: 'Meetings',
-            link: '/meetings'
+            link: '/meetings',
+            icon: <MeetingRoom />
         },
         {
             text: 'Recordings',
-            link: '/recordings'
+            link: '/recordings',
+            icon: <Movie />
         },
         {
             text: 'Live Transmissions',
-            link: '/live'
+            link: '/live',
+            icon: <LiveTv/>
         },
         {
             text: 'Analysis',
-            link: '/analysis'
+            link: '/analysis',
+            icon: <Analytics />
         },
         {
             text: 'Settings',
-            link: '/settings'
+            link: '/settings',
+            icon: <Settings />
         }
     ]
 
@@ -181,17 +200,7 @@ const NavBar = ({children}) => {
                         + Create new Meeting
                     </Button>
 
-                    <IconButton
-                        size="large"
-                        aria-label="display more actions"
-                        edge="end"
-                        color="inherit"
-                        sx={{marginLeft: "2%", marginRight: "2%"}}
-                    >
-                        <Doorbell/>
-                    </IconButton>
-
-                    <Avatar src="true_viking.png"/>
+                    <Avatar src="true_viking.png" sx={{marginLeft: "2%"}}/>
                     <Typography variant="body2">
                         Kapitan Wiking
                     </Typography>
@@ -224,7 +233,7 @@ const NavBar = ({children}) => {
                                         color: 'white'
                                     }}
                                 >
-                                    {index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}
+                                    {navBtn.icon}
                                 </ListItemIcon>
                                 <ListItemText primary={navBtn.text} sx={{opacity: open ? 1 : 0}}/>
                             </ListItemButton>

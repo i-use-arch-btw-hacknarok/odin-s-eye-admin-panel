@@ -2,9 +2,10 @@ import {Container} from "@mui/material";
 import {Phrase, MockPhrases} from "../../types/Phrase";
 import StepCard from "../../component/Card/ChartCard/StepCard";
 import ContentCard from "../../component/Card/ContentCard/ContentCard";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {HistoryRecord, MockHistoryRecords} from "../../types/History";
 import HistoryCard from "../../component/Card/HistoryCard/HistoryCard";
+import {useParams} from "react-router-dom";
 
 export default function MeetingDetails() {
     const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(null);
