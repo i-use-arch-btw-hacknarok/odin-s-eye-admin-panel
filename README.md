@@ -1,46 +1,70 @@
-# Getting Started with Create React App
+# Odyn's Eye Admin Panel
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Odyn's eye admin panel is one of the 4 components, which is in charge
+of retrieving data with analysis, as well as, human readable conclusions.
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### `npm start`
+### Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+In order to start it up You have to have facebookClientId due to secured paths
+with oauth2 based login.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+After suppliing it, also all components are required for proper functioning.
 
-### `npm test`
+### Local deployment
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+As it is not common, it is worth mentioning that this app is 
+deployed locally on *https* not ~~http~~
 
-### `npm run build`
+## Routing
+```
+├── '/'
+│   ├── meetings
+│       └── :meetingId
+│        
+└── settings
+│
+└── live
+│
+└── home
+│
+└── analysis
+│
+└── recordings
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```Disclaimer
+Many endpoints are under development, hence there are many functionalities
+not implemented due to time limitation. Most developed is meetings path as it is core functionality.
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Oauth2
+We have implemented Oauth2 login with facebook which is responsible for
+veryfing user identity (and in future) to be taken advantage of fe. To schedule facebook events.
 
-### `npm run eject`
+### Welcome screen
+![img.png](.imgs/img.png)
+After login user is presented with simple welcome 
+screen (which is simply just as a placeholder)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Meeting 
+![img.png](img.png)
+After navigating to meeting screens user is able to browse already 
+ended meetings, as well as possibility to browse not scheduled. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Meeting overview
+![img_1.png](.imgs/img_1.png)
+![img_2.png](.imgs/img_2.png)
+![img_3.png](.imgs/img_3.png)
+![img_3.png](.imgs/img_3.png)
+![img_4.png](.imgs/img_4.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### New Meeting Creation
+![img_5.png](.imgs/img_5.png)
+![img_6.png](.imgs/img_6.png)
+![img_7.png](.imgs/img_7.png)
+![img_8.png](.imgs/img_8.png)
